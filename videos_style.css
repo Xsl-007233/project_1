@@ -1,0 +1,125 @@
+/* background image */
+body {
+    background-image: url('./HSHWK2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.h-1{/* make h1 at center position */
+    display:flex;
+    justify-content: center;
+    align-items: center; 
+    height: auto;
+}
+
+.top-link {
+    display: flex;            /* Arrange links in a row */
+    flex-wrap: wrap;          /* Allow wrapping if needed */
+    gap: 15px; 
+}
+
+/*change top link's color and display */
+.top-link a{
+    color: white;
+    background-color: rgba(16, 16, 16, 0.8);
+    border-radius: 15px;
+    text-decoration: none; /*Remove underline*/
+}
+
+/* change footer's color */
+footer{
+    color: white;
+}
+
+footer p{
+    margin-top: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-color: rgba(66, 66, 66, 0.6);
+    border-radius: 5px; /*Edges to sharpen*/
+}
+
+/* Place the video vertically when screen small than 767px*/
+@media (max-width: 767px) {
+    .top-link a {
+        font-size: 14px;
+    }
+    .h-1{
+        font-size: 14px;
+    }
+    /* Place up and down, prevent the area from being too large */
+    .video-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    /* make shape of video be beautify */
+    .video-container video {
+        width: 90%;
+        max-width: 640px;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+    .text_container{
+        font-size: 14px;
+    }
+}
+
+/* Medium devices > 767, < 992 */
+@media (min-width: 768px) and (max-width: 991px) {
+    .top-link a {
+        font-size: 20px;
+    }
+    .h-1{
+        font-size: 20px;
+    }
+    /* Place left to right, prevent the area from being too large */
+    .video-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        padding: 30px;
+    }
+    /* make shape of video be beautify */
+    .video-container video {
+        width: 45%;
+        min-width: 320px;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+    .text_container{
+        font-size: 20px;
+    }
+}
+/* Large devices (tablets, 992px and up)*/
+@media (min-width: 992px) {
+    .top-link a {
+        font-size: 28px;
+    }
+    .h-1{
+        font-size: 28px;
+    }
+    /* Place left to right, prevent the area from being too large */
+    .video-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        padding: 40px;
+    }
+    /* make shape of video be beautify */
+    .video-container video {
+        width: 30%;
+        min-width: 300px;
+        border: 2px solid black;
+        border-radius: 10px;
+        
+    }
+    .text_container{
+        font-size: 28px;
+    }
+}

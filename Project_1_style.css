@@ -1,0 +1,143 @@
+body{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Overall layout: left vertical + right content */
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left vertical title */
+.vertical-title-text {
+    writing-mode: vertical-rl; /* vertical right to left */
+    transform: rotate(180deg); /* Rotates title 180 degrees.*/
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(3, 163, 131);
+    background-color: rgba(28, 24, 24, 0.4); /* Translucent background frame */
+    backdrop-filter: blur(5px); /* make background Frosted */
+    padding: 30px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Top main area */
+.main-content {
+    flex: 1; /* The child elements in flex occupy 1 space. */
+    padding: 20px;
+}
+
+/* Top navigation */
+.top-link a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px; /*Edges to sharpen*/
+    
+}
+
+/* Footer */
+footer {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+}
+/* Changes of the links in footer */
+footer a {
+    color: white; 
+}
+
+/* background image */
+body {
+    background-image: url('./HSHWK.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* make card background translucent */
+.card {
+    background-color: rgba(255, 255, 255, 0.4); /* Translucent background frame */
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 15px; /*Edges to sharpen*/
+    box-shadow: 0 0 10px rgba(0,0,0,0.9); /* Border shadow */
+    backdrop-filter: blur(5px);
+}
+/* Media Queries */
+@media (max-width: 767px) {
+    .top-link a {
+        font-size: 14px;
+    }
+    footer {
+        font-size: 14px;
+    }
+    .vertical-title-text {
+        font-size: 14px;
+    }
+    .card-container { /*make card column */
+        flex-direction: column; /* Place vertically */
+        align-items: center; /* make card at center */
+        padding-top: 5px; /* more space between Top */
+    }
+    .card { /* fill screen when use phone */
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .top-link a {
+        font-size: 20px;
+    }
+    footer {
+        font-size: 20px;
+    }
+    .vertical-title-text {
+        font-size: 18px;
+    }
+
+    .card-container{
+        padding-top: 50px;
+    }
+
+    .card { /* fill screen when use phone */
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    .top-link a {
+        font-size: 28px;
+    }
+    footer {
+        font-size: 20px;
+        gap: 20px;
+    }
+    .vertical-title-text {
+        font-size: 22px;
+    }
+    .card-container {
+    display: flex; /* Horizontal arrangement */
+    flex-direction: row; /* Horizontal */
+    justify-content: space-between; /* center */
+    gap: 20px; /* space between cards */
+    padding-top: 50px;
+    }
+
+    .card {
+    flex: 1;
+    width: 100%;  /* make sure text will not leak */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
+}

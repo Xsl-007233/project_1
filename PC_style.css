@@ -1,0 +1,172 @@
+/* Background */
+body {
+    background-image: url('./HSHWK3.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+/* Top links */
+.top-link {
+    display: flex;
+    justify-content: flex-start;
+    gap: 25px;
+    padding: 20px;
+    
+}
+
+.top-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.8);/* Dark translucent background */
+    border-radius: 5px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Main container */
+.Main-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    max-width: 1200px;
+}
+
+/* Layout */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Left content */
+.main-left {
+    flex: 1;
+    padding: 20px;
+}
+
+.main-left h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.main-left p {
+    font-size: 18px;
+    color: white;
+    line-height: 1.6;
+}
+
+/* Right image section */
+.main-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Glassy blurred background */
+.blurred-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Image style */
+.blurred-card img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+footer p{
+    background-color: rgba(30, 30, 30, 0.9);/* Dark translucent background */
+    border-radius: 12px;                    /* Rounded corners */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);/* Shadow for elevation */
+}
+/* Footer link color */
+footer a {
+  color: rgb(64, 121, 255);
+  
+}
+
+/* Responsive: mobile */
+@media (max-width: 767px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .Main-container{
+        width: 80%;
+    }
+
+    .main-left,.main-right {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+    .top-link{
+        gap:5px;
+    }
+    .top-link a {
+        font-size: 16px;
+    }
+
+    .blurred-card img {
+        max-width: 90%;
+    }
+}
+
+/* Responsive: tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+    .top-link a {
+        font-size: 20px;
+    }
+
+
+    .Main-container{
+        width: 85%;
+        padding: 20px;
+        margin: 30px auto;
+    }
+
+    .main-content {
+        flex-direction: column; /* Stack vertically */
+        align-items: center;     /* Center align items */
+    }
+
+    .main-left, .main-right {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .main-left p {
+        font-size: 20px;
+    }
+
+    .main-right {
+        margin-top: 20px;
+    }
+}
+
+/* Responsive: desktop */
+@media (min-width: 992px) {
+  .top-link a {
+    font-size: 28px;
+  }
+}

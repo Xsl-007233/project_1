@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project_1</title>
+    <link rel="stylesheet" href="./Project_1_style.css" /><!--link to css-->
+    <link rel="icon" type="image/png" href="./IMG_7897.png" /><!--web image-->
+</head>
+
+<body>
+    <div class="layout">
+        <!-- Left vertical text -->
+        <div class="vertical-title-text">
+            <h1>Welcome to my profile</h1>
+        </div>
+
+        <!-- Main content on the top -->
+        <div class="main-content">
+            <!-- link to other html on the top -->
+            <div class="top-link">
+                <a href="./Project_1.html">Home</a>
+                <a href="./Xinshuo_Li_Resume.docx" target="_blank">Ressume</a>
+                <a href="./My_hobby.html">My Hobby</a>
+                <a href="./PC.html">My PC</a>
+                <a href="./videos.html">Highlight</a>
+            </div>
+
+            <!-- Home page card container -->
+            <div class="card-container">
+                <!--First card-->
+                <div class="card">
+                    <div class="card-header">
+                        <h2><u>About me</u></h2><!--Title-->
+                        <!-- paragraph -->
+                        <span class="icon">My full name is Xinshuo Li, and my age is 22,I am currently studying at CUNY Queens College, 
+                            my major is computer science and I am currently a junior. The languages 
+                            ​​I have learned are C++ and Java, but I am not very proficient in Python.
+                        </span>
+                        <hr>
+                    </div>
+                    <div class="card-line"></div>
+                </div>
+                <!--Second card-->
+                <div class="card">
+                    <div class="card-header">
+                        <h2><u>My hobby</u></h2><!--Title-->
+                        <!-- paragraph -->
+                        <span class="icon">In my spare time, I like to read books about history, especially what happened during the Second World War. When I am not reading, 
+                            I choose to play video games. My favorite competitive game is CS2, and the strategy game is Civilization V.<hr>
+                        </span>
+                    </div>
+                    <div class="card-line"></div>
+                    <p>You can click on "My hobby" at the top to see more details</p><!-- Content 1 -->
+                </div>
+                <!--Third card-->
+                <div class="card">
+                    <div class="card-header">
+                        <h2><u>Little interesting thing</u></h2><!--Title-->
+                        <!-- paragraph -->
+                        <span class="icon"> 
+                            The two desktop computers I use are all built by myself with parts I bought, and I like building sets.<hr>
+                        </span>
+                    </div>
+                    <p>Click "PC" and "My Hobbies" to view photos </p>
+                    <div class="card-line"></div>
+                </div>
+            </div>
+            <!--Footer-->
+            <footer>
+                <hr color="rgb(176, 117, 203)">
+                Contact me:<br>
+                E-mail: <u>xinshuo.li14@qmail.cuny.edu</u><br>
+                Discord name: <u>nicknamexsl</u><br>
+
+                <a href="https://steamcommunity.com/profiles/76561198383836911/"><u>Steam</u></a>
+                <a href="https://x.com/wcgman_xsl?s=21&t=gZD61hae8Ll36NFsHategw"><u>Twitter</u></a>
+                <br>
+                <a href="./HSHWK.png"download="./HSHWK.png" ><u>Click here to dounload background</u></a>
+            </footer>
+        </div>
+    </div>
+    <!-- Konami Code Easter Egg Script -->
+<script>
+    // From ChatGpt_4o
+    // Define the correct Konami Code sequence
+    const konamiCode = [
+        "arrowup", "arrowup",
+        "arrowdown", "arrowdown",
+        "arrowleft", "arrowright",
+        "arrowleft", "arrowright",
+        "b", "a"
+    ];
+
+    // Only accept these keys as part of the sequence
+    const validKeys = new Set(konamiCode);
+
+    // Store user input
+    let input = [];
+
+    // Listen for key presses
+    document.addEventListener("keydown", function (e) {
+        const key = e.key.toLowerCase(); // Convert key to lowercase
+
+        // Ignore unrelated keys (like "process" from input methods)
+        if (!validKeys.has(key)) return;
+
+        // Add the valid key to the input sequence
+        input.push(key);
+
+        // Limit the input length to match Konami code length
+        if (input.length > konamiCode.length) {
+            input.shift(); // Remove oldest key if too long
+        }
+
+        // If the input matches the Konami Code, trigger the Easter egg
+        if (input.join() === konamiCode.join()) {
+            alert("🎉 Congratulations! You gained 30 extra lives!");
+            input = []; // Reset input after success
+        }
+    });
+</script>
+</body>
+</html>

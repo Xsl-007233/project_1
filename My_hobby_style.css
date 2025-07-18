@@ -1,0 +1,154 @@
+body{
+    background: linear-gradient(to bottom, white 0%, gray 40%, rgb(59, 59, 59) 100%);
+    background-repeat: no-repeat;
+    background-size: cover; /*Background is always full*/
+    background-attachment: fixed; /* The background does not move when scrolling */
+}
+
+.top-link {
+    display: flex;                          /* Horizontal layout */
+    flex-wrap: wrap;                        /* Allow links to wrap if needed */
+    gap: 10px;
+    justify-content: flex-start;            /* Align to the left */
+    align-items: center;                    /* Vertical alignment */
+    padding: 15px 25px;                     /* Inner spacing */
+    margin-top: 10px;                       /* Add spacing from top */
+    backdrop-filter: blur(6px);             /* Frosted glass effect */
+    max-width: 95vw;                        /* Prevent overflow */
+    margin-left: auto;
+    margin-right: auto;                     /* Center the nav bar in large screens */
+}
+
+.top-link a {
+    color: white;                           /* White link text */
+    text-decoration: none;                  /* Remove underline */
+    padding: 8px 16px;                      /* Inner link padding */
+    border-radius: 15px;                    /* Rounded buttons */
+    background-color: rgba(16, 16, 16, 0.6);/* Dark translucent background */
+    border-radius: 12px;                    /* Rounded corners */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);/* Shadow for elevation */
+}
+
+
+.title{
+    display: flex;
+    /* make title at center */
+    justify-content: center; 
+    align-items: center;
+    margin-top: 80px;
+}
+
+/* Main content contorl */
+.gallery {
+    display: grid;
+    gap: 20px;  /* space between two image */
+    padding: 20px;
+    margin: 50px;
+}
+
+/* The third part of the gallery, making it slidable */
+.slider {
+    display: flex;
+    overflow-x: auto; /*Enable horizontal scroll bar*/
+    scroll-snap-type: x mandatory; /*Force Snap to the nearest image*/
+    scroll-behavior: smooth;/*Smooth sliding*/
+    gap: 10px;
+    border-radius: 6px;/*Rounded border*/
+    margin-bottom: 10px;
+}
+
+/*Let the image be wrapped by a so that it inherits the properties of a*/
+.slider a {
+    flex: 0 0 100%; /* Each picture is one screen wide, no zooming in or out*/
+    scroll-snap-align: start; /* Align left when sliding */
+    display: block; /*Links wrap around images like a box*/
+}
+
+/* image in slider */
+.slider img {
+    flex: 0 0 100%; /*Fix the width of each image to the "container width" and do not scale or grow*/
+    scroll-snap-align: start; /* When the image is adsorbed, it is aligned from the left */
+    width: 100%;
+    height: auto;
+    border-radius: 6px; /* Each image also has rounded corners to coordinate with the container*/
+    object-fit: cover; /* Keep content full when cropping images*/
+}
+
+/* image body contorl */
+.img {
+    width: 200px; /* width of each image */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* Translucent background frame */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* image control */
+.img img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+
+/*control for text under img */
+.img a {
+    text-decoration: none; /*Remove underline*/
+    color: rgb(0, 72, 6); 
+}
+
+/* text color */
+.img p{
+    color: rgb(0, 72, 6); 
+}
+
+
+/* Media Queries */
+@media (max-width: 767px) {
+    .title{
+        margin-top: 120px;
+    }
+    .top-link a {
+        font-size: 16px;
+    }
+    /*When using phone, each row has only one img */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    .img{
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .top-link a {
+        font-size: 20px;
+    }
+    /*When using ipad, each row has two img */
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+    .gallery p{
+        font-size: 20px;
+    }
+    .img{
+        width: 85%;
+    }
+}
+
+@media (min-width: 992px) {
+    .top-link a {
+        font-size: 28px;
+    }
+    /*When using PC, each row has four img */
+    .gallery {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .gallery p{
+        font-size: 25px;
+    }
+    .img{
+        width: 95%;
+    }
+}
