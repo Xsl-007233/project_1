@@ -4,24 +4,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My highlight Videos</title>
-        <link rel="stylesheet" href="./videos_style.css"><!-- style link -->
-        <link rel="icon" type="image/png" href="./IMG_7943.png" /><!--web image-->
+        <link rel="stylesheet" href="./videos_style.css">
+        <link rel="icon" type="image/png" href="./IMG_7943.png" />
     </head>
-    <body>
-        <div class="top-link"><!-- jump to new web -->
-                <a href="./index.html">Home</a>
-                <a href="./Resume.docx" target="_blank">Ressume</a>
-                <a href="./My_hobby.html">My Hobby</a>
-                <a href="./PC.html">My PC</a>
-                
-        </div>
+<body>
+    <!-- Welcome overlay -->
+    <div class="welcome-screen">
+        <div class="welcome-text">Jumping to highlight</div>
+    </div>
 
-        <div class="h-1">
-            <h1>My videos</h1>
+    <div class="header-bar">
+        <div class="name-title">Xinshuo Li</div>
+        <div class="top-link">
+            <a href="./index.html">Home</a>
+            <a href="./Xinshuo_Li_Resume.docx" target="_blank">Download Resume</a>
+            <a href="./My_hobby.html">My Hobby</a>
+            <a href="./PC.html">My PC</a>
+            <a href="./videos.html">Highlight</a>
         </div>
+    </div>
 
-        <!-- container contain videos -->
-        <div class="video-container">
+    <div class="h-1">
+        <h1>My videos</h1>
+    </div>
+
+    <div class="video-container">
         <video>
             <source src="./168.mov" type="video/mp4">
         </video>
@@ -31,14 +38,63 @@
         <video controls>
             <source src="./174.mov" type="video/mp4">
         </video>
+    </div>
+
+    <footer>
+        <hr>
+        <div class="text_container">
+            <p><i>
+                As you can see, these three videos were made when I was still in high school. 
+            </i></p>
         </div>
-        <footer>
-            <hr>
-            <div class="text_container">
-                <p><i>
-                    As you can see, these three videos were made when I was still in high school. 
-                </p></i>
-            </div>
-        </footer>
-    </body>
+    </footer>
+
+    <script>
+        window.addEventListener("load", () => {
+            const hasPlayed = sessionStorage.getItem("videosWelcomePlayed");
+            const welcomeScreen = document.querySelector('.welcome-screen');
+            const header = document.querySelector('.header-bar');
+            const title = document.querySelector('.h-1');
+            const container = document.querySelector('.video-container');
+            const footer = document.querySelector('footer');
+
+            function showContentImmediately() {
+                if (welcomeScreen) welcomeScreen.style.display = "none";
+                if (header) {
+                    header.style.opacity = "1";
+                    header.style.transform = "translateY(0)";
+                }
+                if (title) {
+                    title.style.opacity = "1";
+                    title.style.transform = "translateY(0)";
+                }
+                if (container) {
+                    container.style.opacity = "1";
+                    container.style.transform = "translateY(0)";
+                }
+                if (footer) {
+                    footer.style.opacity = "1";
+                    footer.style.transform = "translateY(0)";
+                }
+            }
+
+            if (!hasPlayed) {
+                sessionStorage.setItem("videosWelcomePlayed", "true");
+
+                setTimeout(() => {
+                    if (welcomeScreen) welcomeScreen.style.display = "none";
+                    if (header) header.classList.add("fade-in");
+
+                    setTimeout(() => {
+                        title?.classList.add("fade-in");
+                        container?.classList.add("fade-in");
+                        footer?.classList.add("fade-in");
+                    }, 1000);
+                }, 3000);
+            } else {
+                showContentImmediately();
+            }
+        });
+    </script>
+</body>
 </html>

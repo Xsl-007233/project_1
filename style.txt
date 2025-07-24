@@ -1,0 +1,263 @@
+/* Reset margin */
+body {
+    margin-top: 0;
+    margin-bottom: 0;
+    background-image: url('./HSHWK.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Layout container */
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* Fixed vertical title on the left */
+.vertical-title-text {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 1000;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(3, 163, 131);
+    background-color: rgba(28, 24, 24, 0.4);
+    backdrop-filter: blur(5px);
+    padding: 30px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animated vertical title text */
+.vertical-letter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Brush Script MT", cursive, "Segoe Script", sans-serif;
+}
+
+.vertical-letter span {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    margin-bottom: 20px;
+}
+
+.vertical-letter span:nth-child(1) { animation-delay: 0s; }
+.vertical-letter span:nth-child(2) { animation-delay: 0.2s; }
+.vertical-letter span:nth-child(3) { animation-delay: 0.4s; }
+.vertical-letter span:nth-child(4) { animation-delay: 0.6s; }
+.vertical-letter span:nth-child(5) { animation-delay: 0.8s; }
+.vertical-letter span:nth-child(6) { animation-delay: 1s; }
+.vertical-letter span:nth-child(7) { animation-delay: 1.2s; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Right side main content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 100px;
+}
+
+/* Top navigation */
+.top-link a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+}
+
+/* Footer styles */
+footer {
+    color: white;
+    font-size: 18px;
+}
+
+footer a {
+    color: white;
+}
+
+/* Card layout */
+.card-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.reverse-row {
+    flex-direction: row-reverse;
+}
+
+.card-img {
+    flex: 1;
+    text-align: center;
+}
+
+.card-img img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-text {
+    flex: 2;
+    font-size: 18px;
+}
+
+/* Neon animated edge tracker effect using rotating conic gradient */
+.card {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    margin-top: 50px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card::before,
+.card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 15px;
+    background: conic-gradient(
+      from 0deg,
+      #00f,
+      #0ff,
+      #f0f,
+      #00f
+    );
+    animation: rotate 4s linear infinite;
+    z-index: -1;
+}
+
+.card::after {
+    filter: blur(10px);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+/* Responsive: Small screen */
+@media (max-width: 767px) {
+    .top-link a {
+        font-size: 14px;
+    }
+    footer {
+        font-size: 14px;
+    }
+    .vertical-letter {
+        font-size: 30px;
+    }
+    .card-row, .reverse-row {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-text {
+        order: 1;
+        width: 100%;
+    }
+    .card-img {
+        order: 2;
+        width: 100%;
+    }
+    .card-img img {
+        max-width: 90%;
+        margin-top: 10px;
+    }
+}
+
+/* Responsive: Medium screen */
+@media (min-width: 768px) and (max-width: 991px) {
+    .top-link a {
+        font-size: 20px;
+    }
+    footer {
+        font-size: 20px;
+    }
+    .vertical-letter {
+        font-size: 40px;
+    }
+    .card-row {
+        flex-direction: row;
+    }
+    .reverse-row {
+        flex-direction: row-reverse;
+    }
+    .card-text, .card-img {
+        width: 50%;
+    }
+    .card-img img {
+        max-width: 85%;
+        height: auto;
+    }
+}
+
+/* Responsive: Large screen */
+@media (min-width: 992px) {
+    .top-link a {
+        font-size: 28px;
+    }
+    footer {
+        font-size: 20px;
+        gap: 20px;
+    }
+    .vertical-letter {
+        font-size: 50px;
+    }
+    .card-row {
+        flex-direction: row;
+    }
+    .reverse-row {
+        flex-direction: row-reverse;
+    }
+    .card-text {
+        font-size: 30px;
+    }
+    .card-img {
+        width: 50%;
+    }
+    .card-img img {
+        max-width: 60%;
+        height: auto;
+    }
+}

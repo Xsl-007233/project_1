@@ -9,17 +9,24 @@
 </head>
 
 <body>
-    <!-- Top navigation -->
+  <!-- Welcome overlay -->
+  <div class="welcome-screen">
+    <div class="welcome-text">Jumping to My PC</div>
+  </div>
+  <!-- Top navigation -->
+  <div class="header-bar">
+    <div class="name-title">Xinshuo Li</div>
     <div class="top-link">
         <a href="./index.html">Home</a>
-        <a href="./Resume.docx" target="_blank">Ressume</a>
-        <a href="./My_hobby.html">Hobbies</a>
+        <a href="./Xinshuo_Li_Resume.docx" target="_blank">Download Resume</a>
+        <a href="./My_hobby.html">My Hobby</a>
+        <a href="./PC.html">My PC</a>
         <a href="./videos.html">Highlight</a>
     </div>
+  </div>
 
   <div class="Main-container">
     <h1 class="main-title">My PC Specifications</h1>
-
     <div class="main-content">
         <!-- Left side content -->
         <div class="main-left">
@@ -41,23 +48,65 @@
             </p>
         </div>
 
-      <!-- Right image -->
-      <div class="main-right">
-        <div class="blurred-card">
-          <a href="./IMG_8074.jpg" target="_blank">
-            <img src="./IMG_8074.jpg" alt="My PC" />
-          </a>
+        <!-- Right image -->
+        <div class="main-right">
+            <div class="blurred-card">
+                <a href="./IMG_8074.jpg" target="_blank">
+                    <img src="./IMG_8074.jpg" alt="My PC" />
+                </a>
+            </div>
         </div>
-      </div>
     </div>
   </div>
 
   <footer>
-    <hr />
+    <hr>
     <p>
       Click <a href="https://pcpartpicker.com/list/" target="_blank">here</a>
       to visit a website where you can customize your PC build. It provides prices, purchase options, and checks compatibility between components.
     </p>
   </footer>
+
+<script>
+    window.addEventListener("load", () => {
+        const hasPlayed = sessionStorage.getItem("pcWelcomePlayed");
+        const welcomeScreen = document.querySelector('.welcome-screen');
+        const welcomeText = document.querySelector('.welcome-text');
+        const header = document.querySelector('.header-bar');
+        const main = document.querySelector('.Main-container');
+        const footer = document.querySelector('footer');
+
+        function showContentImmediately() {
+            if (welcomeScreen) welcomeScreen.style.display = "none";
+            if (header) {
+                header.style.opacity = "1";
+                header.style.transform = "translateY(0)";
+            }
+            if (main) {
+                main.style.opacity = "1";
+                main.style.transform = "translateY(0)";
+            }
+            if (footer) {
+                footer.style.opacity = "1";
+                footer.style.transform = "translateY(0)";
+            }
+        }
+
+        if (!hasPlayed) {
+            sessionStorage.setItem("pcWelcomePlayed", "true");
+            setTimeout(() => {
+                if (welcomeScreen) welcomeScreen.style.display = "none";
+                if (header) header.classList.add("fade-in");
+
+                setTimeout(() => {
+                    main?.classList.add("fade-in");
+                    footer?.classList.add("fade-in");
+                }, 1000);
+            }, 3000);
+        } else {
+            showContentImmediately();
+        }
+    });
+</script>
 </body>
 </html>

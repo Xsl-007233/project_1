@@ -1,143 +1,491 @@
-body{
+/* === Reset default margin and set background image === */
+body {
     margin-top: 0;
     margin-bottom: 0;
+    background-image: url('./HSHWK.png'); /* Set page background */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* Make background stay fixed when scrolling */
 }
 
-/* Overall layout: left vertical + right content */
+/* === Main layout using flexbox === */
 .layout {
     display: flex;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
 }
 
-/* Left vertical title */
+/* === Fixed vertical title bar on the left side === */
 .vertical-title-text {
-    writing-mode: vertical-rl; /* vertical right to left */
-    transform: rotate(180deg); /* Rotates title 180 degrees.*/
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 1000;
     font-size: 20px;
     font-weight: bold;
     color: rgb(3, 163, 131);
-    background-color: rgba(28, 24, 24, 0.4); /* Translucent background frame */
-    backdrop-filter: blur(5px); /* make background Frosted */
+    background-color: rgba(28, 24, 24, 0.4);
+    backdrop-filter: blur(5px); /* Glass blur effect */
     padding: 30px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Top main area */
-.main-content {
-    flex: 1; /* The child elements in flex occupy 1 space. */
-    padding: 20px;
+/* === Vertical layout for animated letters === */
+.vertical-letter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Brush Script MT", cursive, "Segoe Script", sans-serif;
 }
 
-/* Top navigation */
+/* === Initially hide individual letters === */
+.vertical-letter span {
+    opacity: 0;
+    margin-bottom: 20px;
+}
+
+/* === Trigger fade-in animation === */
+.trigger-fade {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* === Set animation delays for each letter === */
+.vertical-letter span:nth-child(1) { animation-delay: 0s; }
+.vertical-letter span:nth-child(2) { animation-delay: 0.2s; }
+.vertical-letter span:nth-child(3) { animation-delay: 0.4s; }
+.vertical-letter span:nth-child(4) { animation-delay: 0.6s; }
+.vertical-letter span:nth-child(5) { animation-delay: 0.8s; }
+.vertical-letter span:nth-child(6) { animation-delay: 1s; }
+.vertical-letter span:nth-child(7) { animation-delay: 1.2s; }
+
+/* === Fade-in animation from above === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === Header: name on the left, nav on the right === */
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+/* === Site name/title styling === */
+.name-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 4px rgb(148, 148, 148);
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+/* === Header navigation link container === */
+.header-bar .top-link {
+    display: flex;
+    gap: 15px;
+}
+
+/* === General nav link style === */
 .top-link a {
     color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 4px rgb(148, 148, 148);
     text-decoration: none;
     font-size: 20px;
     margin-right: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 5px; /*Edges to sharpen*/
-    
+    border-radius: 5px;
 }
 
-/* Footer */
+/* === Main content area on the right === */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 100px; /* Offset for vertical title bar */
+}
+
+/* === Footer style === */
 footer {
-    color: rgb(255, 255, 255);
+    color: white;
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+footer a {
+    color: white;
+}
+
+/* === Card section layout === */
+.card-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+.reverse-row {
+    flex-direction: row-reverse;
+}
+
+/* === Card image styles === */
+.card-img {
+    flex: 1;
+    text-align: center;
+}
+.card-img img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* === Card text styles === */
+.card-text {
+    flex: 2;
     font-size: 18px;
 }
-/* Changes of the links in footer */
-footer a {
-    color: white; 
-}
 
-/* background image */
-body {
-    background-image: url('./HSHWK.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-/* make card background translucent */
+/* === Card container background and styling === */
 .card {
-    background-color: rgba(255, 255, 255, 0.4); /* Translucent background frame */
-    margin-top: 50px;
+    position: relative;
+    z-index: 3;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
     padding: 20px;
-    border-radius: 15px; /*Edges to sharpen*/
-    box-shadow: 0 0 10px rgba(0,0,0,0.9); /* Border shadow */
-    backdrop-filter: blur(5px);
+    margin-top: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
-/* Media Queries */
+
+
+.card-text{
+    color: rgb(204, 255, 0);
+}
+
+/* === Responsive layout: Small screens (phones) === */
 @media (max-width: 767px) {
+    .header-bar {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 20px;
+        padding: 15px 20px;
+    }
+
+    .name-title {
+        font-size: 18px;
+        font-weight: bold;
+        background-color: rgba(255, 255, 255, 0.6);
+        padding: 5px 15px;
+        border-radius: 8px;
+        color: black;
+        text-shadow: 1px 1px 4px rgb(148, 148, 148);
+        justify-self: start;
+    }
+
+    .top-link {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+        justify-self: end;
+    }
+
     .top-link a {
         font-size: 14px;
+        color: black;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 8px 16px;
+        border-radius: 12px;
+        text-decoration: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        width: fit-content;
     }
+
     footer {
         font-size: 14px;
     }
+
     .vertical-title-text {
-        font-size: 14px;
+        margin-right: 30px;
+        height: 100%;
     }
-    .card-container { /*make card column */
-        flex-direction: column; /* Place vertically */
-        align-items: center; /* make card at center */
-        padding-top: 5px; /* more space between Top */
+
+    .vertical-letter {
+        font-size: 50px;
     }
-    .card { /* fill screen when use phone */
-        width: 90%;
-        margin-bottom: 20px;
+
+    .main-content {
+        margin-left: 30px;
+    }
+
+    .card-row, .reverse-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card-text {
+        order: 1;
+        width: 100%;
+    }
+
+    .card-text h2 {
+        color: black;
+        font-size: 30px;
+    }
+
+    .card-text p {
+        color: black;
+        font-size: 27px;
+    }
+
+    .card-img {
+        order: 2;
+        width: 100%;
+    }
+
+    .card-img img {
+        max-width: 90%;
+        margin-top: 10px;
+    }
+
+    .name-title {
+        margin-right: 10px;
+    }
+
+    footer {
+        font-size: 24px;
+    }
+
+    .footer a {
+        font-size: 24px;
     }
 }
 
+/* === Responsive layout: Medium screens (tablets) === */
 @media (min-width: 768px) and (max-width: 991px) {
     .top-link a {
         font-size: 20px;
     }
+
     footer {
         font-size: 20px;
     }
-    .vertical-title-text {
-        font-size: 18px;
+
+    .vertical-letter {
+        font-size: 40px;
     }
 
-    .card-container{
-        padding-top: 50px;
+    .card-row {
+        flex-direction: row;
     }
 
-    .card { /* fill screen when use phone */
-        width: 90%;
-        margin-bottom: 20px;
+    .reverse-row {
+        flex-direction: row-reverse;
+    }
+
+    .card-text, .card-img {
+        width: 50%;
+    }
+
+    .card-img img {
+        max-width: 85%;
+        height: auto;
     }
 }
 
+/* === Responsive layout: Large screens (desktops) === */
 @media (min-width: 992px) {
     .top-link a {
         font-size: 28px;
     }
+
     footer {
         font-size: 20px;
         gap: 20px;
     }
-    .vertical-title-text {
-        font-size: 22px;
-    }
-    .card-container {
-    display: flex; /* Horizontal arrangement */
-    flex-direction: row; /* Horizontal */
-    justify-content: space-between; /* center */
-    gap: 20px; /* space between cards */
-    padding-top: 50px;
+
+    .vertical-letter {
+        font-size: 50px;
     }
 
-    .card {
-    flex: 1;
-    width: 100%;  /* make sure text will not leak */
+    .card-row {
+        flex-direction: row;
+    }
+
+    .reverse-row {
+        flex-direction: row-reverse;
+    }
+
+    .card-text {
+        font-size: 30px;
+    }
+
+    .card-img {
+        width: 50%;
+    }
+
+    .card-img img {
+        max-width: 60%;
+        height: auto;
+    }
+}
+
+/* === 4K or ultra-wide displays === */
+@media (min-width: 2560px) {
+    .welcome-text {
+        font-size: 500px !important;
+        animation: fadeOnly 3s forwards !important;
+        text-align: center;
+        color: white;
+    }
+
+    .vertical-letter {
+        font-size: 200px;
+    }
+
+    .name-title {
+        font-size: 100px;
+    }
+
+    .top-link a {
+        font-size: 100px;
+    }
+
+    .card-img img {
+        width: 55%;
+    }
+
+    .card-text {
+        font-size: 100px;
+    }
+
+    footer {
+        font-size: 80px;
+    }
+
+    .footer a {
+        font-size: 80px;
+    }
+}
+
+/* === Welcome screen overlay on page load === */
+.welcome-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    background-color: black;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+
+/* === Welcome text animation: slide left and fade === */
+.welcome-text {
+    font-size: 2.5rem;
+}
+
+/* === Animation for fading out the black screen === */
+@keyframes fadeOutScreen {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* === Animation for moving text to the left and fading out === */
+@keyframes moveLeftFade {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    25% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    60% {
+        transform: translateX(-40vw);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-60vw);
+        opacity: 0;
+    }
+}
+
+/* === Animation for fading up card/header components === */
+.fade-in {
+    animation: fadeUp 1s forwards;
+}
+
+.header-bar,
+.card {
+    opacity: 0;
+    transform: translateY(20px); /* Start offset down */
+}
+
+/* === Fade-up animation === */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === Fade-out-only animation === */
+@keyframes fadeOnly {
+    0%   { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 1px;
+    background: linear-gradient(270deg, #ff00cc, #00ffff, #3333ff, #ffcc00, #ff00cc);
+    background-size: 600% 600%;
+    animation: glowBorder 8s linear infinite;
+
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes glowBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
     }
 }
